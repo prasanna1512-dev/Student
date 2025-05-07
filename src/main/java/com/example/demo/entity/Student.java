@@ -1,17 +1,27 @@
 package com.example.demo.entity;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Data
 @Entity
-@Table(name = "Student")
+@Table(name = "std")
+@NoArgsConstructor
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column(name= "rollno")
 	public int rollno;
 	@Column(name = "studentname")
 	public String name;
@@ -19,53 +29,13 @@ public class Student {
 	public String department;
 	@Column
 	public float percentage;
-
-	public String getName() {
-		return name;
-	}
-
-	public Student() {
-
-	}
-
-	public Student(String name, String department, float percentage) {
+	
+	
+	public Student( String name, String department, float percentage) {
 		super();
 		this.name = name;
 		this.department = department;
 		this.percentage = percentage;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getRollno() {
-		return rollno;
-	}
-
-	public void setRollno(int rollno) {
-		this.rollno = rollno;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public float getPercentage() {
-		return percentage;
-	}
-
-	public void setPercentage(float percentage) {
-		this.percentage = percentage;
-	}
-
-	@Override
-	public String toString() {
-		return "Student [rollno=" + rollno + ", name=" + name + ", department=" + department + ", percentage="
-				+ percentage + "]";
-	}
 }

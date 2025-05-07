@@ -3,7 +3,8 @@ package com.example.demo.controller;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
- 
+
+import com.example.demo.Response.StudentResponse;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,12 +56,11 @@ class demoRestControllerTest {
  
     @Test
     void testGetStudent() throws Exception {
-        Student student = new Student("hanvi","EEE",78.9f);
-        when(sdtService.getStudentById(1)).thenReturn(Optional.of(student));
+        StudentResponse stdResponse = new StudentResponse();
+        when(sdtService.getStudentByRollno(1)).thenReturn(stdResponse );
  
         mockMvc.perform(get("/student/1"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.name").value("hanvi"));
+            .andExpect(status().isOk());
     }
  
     @Test

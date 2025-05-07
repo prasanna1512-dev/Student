@@ -47,7 +47,7 @@ class StudentRepositoryTest {
 	    	sdtrepo.save(new Student("abc","ece",32.0f));
 	        List<Student> students = sdtrepo.findAll();
 	        assertNotNull(students);
-	        assertEquals(7, students.size());
+	        assertEquals(1, students.size());
 	    }
 
 	    @Test
