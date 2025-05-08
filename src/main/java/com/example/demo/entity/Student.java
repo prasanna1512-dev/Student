@@ -10,9 +10,9 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Data
 @Entity
@@ -23,13 +23,11 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name= "rollno")
 	public int rollno;
-	@Column(name = "studentname")
+	@Column(name = "name")
 	public String name;
-	@Column(name = "stdepartment")
+	@Column(name = "department")
 	public String department;
-	@Column
 	public float percentage;
 	
 	
