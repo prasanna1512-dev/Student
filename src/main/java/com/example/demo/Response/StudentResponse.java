@@ -1,10 +1,12 @@
 package com.example.demo.Response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentResponse {
 	public int rollno;
 	public String name;

@@ -28,7 +28,7 @@ public class StudentService {
     private AddressClient addressClient;
 	
 	 @Autowired
-	    private ModelMapper mapper;
+		private ModelMapper mapper;
 	
 	private static final Logger log = LoggerFactory.getLogger(StudentService.class);
 
@@ -37,15 +37,7 @@ public class StudentService {
         return   sdtrepo.findAll();
     }
 
-//    public Student getStudentById(int rollno) {
-//    	 log.info("Retrieving student with rollno {}", rollno);
-//         return sdtrepo.findById(rollno)
-//                 .orElseThrow(() -> {
-//                     log.warn("Student with rollno {} not found", rollno);
-//                     return new StudentNotFoundException("Student with rollno " + rollno + " not found");
-//                 });
-//    }
-//    
+   
     public StudentResponse getStudentByRollno(int rollno) {
 
         Optional<Student> student  = sdtrepo.findById(rollno);
@@ -83,6 +75,7 @@ public class StudentService {
                 });
 
         student.setName(studentDetails.getName());
+        student.setDepartment(studentDetails.getDepartment());
         log.info("Updated student: {}", student);
         return sdtrepo.save(student);
     }
