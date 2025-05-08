@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +18,12 @@ import com.example.demo.Response.StudentResponse;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @RestController
 public class Controller {
 	@Autowired
 	StudentService sdtService;
-	 private static final Logger log = LoggerFactory.getLogger(StudentService.class);
 		@GetMapping("/students")
 		public List<Student> getAllStudents() {
 			log.info("GET /student - Fetching student");
@@ -32,7 +31,7 @@ public class Controller {
 		}
 
 		@GetMapping("/student/{rollno}")
-	    private ResponseEntity<StudentResponse> getEmployeeDetails(@PathVariable("rollno") int rollno) {
+	    private ResponseEntity<StudentResponse> getStudentDetails(@PathVariable("rollno") int rollno) {
 			StudentResponse student = sdtService.getStudentByRollno(rollno);
 	        return ResponseEntity.status(HttpStatus.OK).body(student);
 	    }
